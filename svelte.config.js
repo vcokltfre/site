@@ -16,7 +16,6 @@ const config = {
       pages: "build",
       assets: "build",
     }),
-    target: "#svelte",
     vite: {
       css: {
         preprocessorOptions: {
