@@ -1,5 +1,6 @@
 <script lang="ts">
   import About from "../pages/about.svelte";
+  import Discord from "../pages/discord.svelte";
   import Home from "../pages/home.svelte";
   import Projects from "../pages/projects.svelte";
 
@@ -20,6 +21,9 @@
     >
     <button on:click={() => (page = "about")} class={page === "about" ? "active" : ""}>About</button
     >
+    <button on:click={() => (page = "discord")} class={page === "discord" ? "active" : ""}
+      >CSS</button
+    >
   </nav>
   <div class="content">
     {#if page === "home"}
@@ -28,6 +32,8 @@
       <Projects />
     {:else if page === "about"}
       <About />
+    {:else if page === "discord"}
+      <Discord />
     {/if}
   </div>
 </div>
