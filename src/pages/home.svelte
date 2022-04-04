@@ -23,7 +23,7 @@
   <h1>vcokltfre</h1>
   <h2 class="idm">{idm}</h2>
   <p>
-    Hi! I'm an 18 year old software developer from Wales, working primarily on Discord bots using
+    Hi! I'm a 19 year old software developer from Wales, working primarily on Discord bots using
     <a href="https://docs.disnake.dev">Disnake</a> or
     <a href="https://docs.nextcord.dev">Nextcord</a>, and APIs using
     <a href="https://fastapi.tiangolo.com">FastAPI</a>. I'm also starting to get into web
@@ -31,7 +31,7 @@
     TypeScript. I love using
     <a href="https://workers.cloudflare.com/">Cloudflare Workers and Pages</a>
     to make serverless projects on Cloudflare's edge too, such as
-    <a href="https://paste.vcokltf.re">my paste service</a>.
+    <a href="https://workbin.dev">my paste service</a>.
   </p>
 </div>
 
