@@ -1,10 +1,34 @@
 <script lang="ts">
+  import { onMount } from "svelte";
+
   import About from "../pages/about.svelte";
   import Discord from "../pages/discord.svelte";
   import Home from "../pages/home.svelte";
   import Projects from "../pages/projects.svelte";
 
   let page = "home";
+
+  function setPage(newPage: string): void {
+    page = newPage;
+
+    if (newPage === "home") {
+      newPage = "";
+    }
+
+    window.history.pushState("", "", `/${newPage}`);
+  }
+
+  onMount(() => {
+    window.onpopstate = function () {
+      let newPath = window.location.pathname.slice(1);
+
+      if (newPath === "") {
+        newPath = "home";
+      }
+
+      page = newPath;
+    };
+  });
 </script>
 
 <svelte:head>
@@ -15,15 +39,13 @@
   <nav class="flex-row centre">
     <img src="favicon.png" alt="vcokltfre icon" />
     <div class="grow" />
-    <button on:click={() => (page = "home")} class={page === "home" ? "active" : ""}>Home</button>
-    <button on:click={() => (page = "projects")} class={page === "projects" ? "active" : ""}
+    <button on:click={() => setPage("home")} class={page === "home" ? "active" : ""}>Home</button>
+    <button on:click={() => setPage("projects")} class={page === "projects" ? "active" : ""}
       >Projects</button
     >
-    <button on:click={() => (page = "about")} class={page === "about" ? "active" : ""}>About</button
+    <button on:click={() => setPage("about")} class={page === "about" ? "active" : ""}>About</button
     >
-    <button on:click={() => (page = "discord")} class={page === "discord" ? "active" : ""}
-      >CSS</button
-    >
+    <button on:click={() => setPage("css")} class={page === "css" ? "active" : ""}>CSS</button>
   </nav>
   <div class="content">
     {#if page === "home"}
@@ -32,7 +54,7 @@
       <Projects />
     {:else if page === "about"}
       <About />
-    {:else if page === "discord"}
+    {:else if page === "css"}
       <Discord />
     {/if}
   </div>
