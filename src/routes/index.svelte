@@ -12,13 +12,21 @@
     page = newPage;
 
     if (newPage === "home") {
-      newPage = "";
+      newPage = "/";
+    } else {
+      newPage = `/?tab=${newPage}`;
     }
 
-    window.history.pushState("", "", `/${newPage}`);
+    window.history.pushState("", "", newPage);
   }
 
   onMount(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+
+    if (urlParams.has("tab")) {
+      setPage(urlParams.get("tab"));
+    }
+
     window.onpopstate = function () {
       let newPath = window.location.pathname.slice(1);
 
@@ -48,14 +56,14 @@
     <button on:click={() => setPage("css")} class={page === "css" ? "active" : ""}>CSS</button>
   </nav>
   <div class="content">
-    {#if page === "home"}
-      <Home />
-    {:else if page === "projects"}
+    {#if page === "projects"}
       <Projects />
     {:else if page === "about"}
       <About />
     {:else if page === "css"}
       <Discord />
+    {:else}
+      <Home />
     {/if}
   </div>
 </div>
